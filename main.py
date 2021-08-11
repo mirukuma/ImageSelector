@@ -7,9 +7,12 @@ import os
 
 
 def main(input_path = "./input", output_path = "./output"):
-    file_names = glob.glob(input_path + "/*")
+    selected_file_names = sorted(glob.glob(output_path + "/*"))
+    file_names = sorted(glob.glob(input_path + "/*"))
 
     i = 0
+    if len(selected_file_names) > 0:
+        i = file_names.index(input_path + '/' + selected_file_names[-1].split('/')[-1])
     good_image = []
     while i < len(file_names):
         img = cv2.imread(file_names[i])
